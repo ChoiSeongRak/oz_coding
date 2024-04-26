@@ -2,48 +2,50 @@ from pymongo import MongoClient
 from datetime import datetime
 client = MongoClient('mongodb://localhost:27017/')
 db = client.local
-# # 특정 장르의 책 찾기
-# def find_books_by_genre(db, genre):
-#     books_ = db.books.find({"genre": genre}, {"title": 1, "author": 1})
-#     for book in books_:
-#         print(book)
-# find_books_by_genre(db,"fantasy")
 
-# # 감독별 평균 영화 평점 계산
-# def calc_dir_rating_avg(db):
-#     movie_collection = db.movies
-#     total = [
-#         {"$group": {"_id" : "$director", "avg_rating": {"$avg":"$rating"}}},
-#         {"$sort": {"avg_rating": -1}}    
-#             ]
-#     results = movie_collection.aggregate(total)
-#     for result in results:
-#         print(result)
-# calc_dir_rating_avg(db)
 
-# # 특정 사용자의 최근 행동 조회
-# def find_user_recent_actions(db, user_id):
-#     user_actions_collection = db.user_actions
-#     cond =[{"$match": {"user_id":user_id}},
-#            {"$sort": {"timestamp":-1}},
-#            {"$limit":5}
-#     ]
-#     results = user_actions_collection.aggregate(cond)
-#     for result in results:
-#         print(result)
-# find_user_recent_actions(db,1)
+# 특정 장르의 책 찾기
+def find_books_by_genre(db, genre):
+    books_ = db.books.find({"genre": genre}, {"title": 1, "author": 1})
+    for book in books_:
+        print(book)
+find_books_by_genre(db,"fantasy")
 
-# # 출판 연도별 책의 수 계산
-# def calc_books_pub_year(db):
-#     books_collection = db.books
-#     cond = [
-#         {"$group":{"_id": "$year","count": {"$sum": 1}}},
-#         {"$sort": {"count": -1}}
-#     ]
-#     results = books_collection.aggregate(cond)
-#     for result in results:
-#         print(result)
-# calc_books_pub_year(db)
+# 감독별 평균 영화 평점 계산
+def calc_dir_rating_avg(db):
+    movie_collection = db.movies
+    total = [
+        {"$group": {"_id" : "$director", "avg_rating": {"$avg":"$rating"}}},
+        {"$sort": {"avg_rating": -1}}    
+            ]
+    results = movie_collection.aggregate(total)
+    for result in results:
+        print(result)
+calc_dir_rating_avg(db)
+
+# 특정 사용자의 최근 행동 조회
+def find_user_recent_actions(db, user_id):
+    user_actions_collection = db.user_actions
+    cond =[{"$match": {"user_id":user_id}},
+           {"$sort": {"timestamp":-1}},
+           {"$limit":5}
+    ]
+    results = user_actions_collection.aggregate(cond)
+    for result in results:
+        print(result)
+find_user_recent_actions(db,1)
+
+# 출판 연도별 책의 수 계산
+def calc_books_pub_year(db):
+    books_collection = db.books
+    cond = [
+        {"$group":{"_id": "$year","count": {"$sum": 1}}},
+        {"$sort": {"count": -1}}
+    ]
+    results = books_collection.aggregate(cond)
+    for result in results:
+        print(result)
+calc_books_pub_year(db)
 
 # 특정 사용자의 행동 유형 업데이트
 def update_user_actions(db,user_id,date,old_action,new_action):
