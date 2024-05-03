@@ -1,0 +1,43 @@
+*{
+    text-align: center;
+
+      
+    
+}
+
+html{
+
+    background-color: #a05611;
+    font-size: 16px;
+}
+
+body{
+    width: 600px;
+    margin: auto; /* 너비에서 남는 여백을 동일하게 조정*/
+    background-color: #e2b488
+}
+div
+{
+    font-size: 20px;
+}
+
+
+h1{
+    font-size: 40px;
+    background-color: rgb(130, 93, 77);
+}
+h2{
+    background-color: rgb(130, 93, 77);
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+
+}
+
+p{
+    font-size: 1.2rem;
+    color: white;
+}z

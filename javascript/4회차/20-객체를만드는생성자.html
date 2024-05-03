@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA_Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체를 만드는 생성자</title>
+</head>
+<body>
+    <script>
+        function Singer(name,member){
+            this.name = name
+            this.member = member
+        }
+        const noel = new Singer("노을", "강균성, 전우성, 이상곤, 나성호")
+        console.log(noel.name)
+        console.log(noel.member)
+           </script>
+</body>
+</html>
