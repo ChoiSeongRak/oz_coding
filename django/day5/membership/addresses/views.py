@@ -7,8 +7,8 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated 
 
 class AddressList(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication] # 고유한 토큰 발급
+    permission_classes = [IsAuthenticated] # 인증 확인
     
     def get(self, request):
         addresses = Address.objects.all()
